@@ -1,0 +1,151 @@
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+.access-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+/* =========================
+   CAMADA DE FUNDO
+   (preenche laterais)
+========================= */
+.access-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image: url('/cover.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+
+  /* Preenche laterais */
+  transform: scale(1.25);
+  filter: blur(6px) brightness(0.6);
+
+  z-index: 0;
+}
+
+/* =========================
+   CAMADA PRINCIPAL
+========================= */
+.access-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image: url('/cover.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  background-size: 80% auto;
+
+  z-index: 1;
+}
+
+.header,
+.hero,
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  height: 64px;
+  padding: 0 32px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Barra translúcida */
+.header-glass {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 30, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1;
+}
+
+/* Botões acima do glass */
+.actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+}
+
+/* Botões */
+.btn {
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+
+  &.login {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  &.register {
+    background: #ffffff;
+    color: #000000;
+    font-weight: 600;
+  }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  flex: 1;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  height: 120px;
+  padding: 0 64px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* =========================
+   LOGOMARCAS
+========================= */
+
+/* Base */
+.logo {
+  height: 72px;
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+}
+
+/* Tivic (esquerda) */
+.logo.left {
+  align-self: flex-end;
+}
+
+/* Sentinel (direita) */
+.logo.right {
+  align-self: flex-end;
+  height: 100px; 
+}

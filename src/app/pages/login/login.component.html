@@ -1,0 +1,61 @@
+<div class="login-container">
+
+  <!-- Botão voltar -->
+  <button
+    class="back-button"
+    (click)="goBack()"
+    aria-label="Voltar"
+  >
+    ←
+  </button>
+
+  <!-- Coluna esquerda (login) -->
+  <div class="login-panel">
+
+    <div class="login-card">
+
+      <!-- Logo -->
+      <div class="logo">
+        <img src="/logo-pura].png" alt="Sentinel System" />
+        <span>SENTINEL</span>
+        <small>SYSTEM</small>
+      </div>
+
+      <!-- Formulário -->
+      <form class="form" (ngSubmit)="login()">
+
+        <label>
+          Usuário
+          <input
+            type="text"
+            placeholder="Usuário"
+            [(ngModel)]="username"
+            name="username"
+            required
+          />
+        </label>
+
+        <label>
+          Senha
+          <input
+            type="password"
+            placeholder="Senha"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </label>
+
+        <button type="submit" class="submit-btn">
+          ENTRAR
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Coluna direita (imagem) -->
+  <div class="visual-panel"></div>
+
+</div>

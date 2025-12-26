@@ -1,104 +1,7 @@
 <div class="dashboard">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-
-    <!-- Logo -->
-    <div class="logo">
-      <img src="/logo-pura].png" alt="Sentinel System" />
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Navegação -->
-    <nav class="nav">
-
-      <a class="nav-item active">
-        <span class="icon">
-          <!-- Home -->
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 3l9 8h-3v10h-5v-6H11v6H6V11H3l9-8z"
-            />
-          </svg>
-        </span>
-        <span>Home</span>
-      </a>
-
-      <a class="nav-item">
-        <span class="icon">
-          <!-- Dashboards -->
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M3 13h6v8H3v-8zm12-10h6v18h-6V3zM10 9h6v12h-6V9z"
-            />
-          </svg>
-        </span>
-        <span>Dashboards</span>
-      </a>
-
-      <a class="nav-item">
-        <span class="icon">
-          <!-- Alerts -->
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 2a7 7 0 017 7v5l2 2v1H3v-1l2-2V9a7 7 0 017-7z"
-            />
-          </svg>
-        </span>
-        <span>Alerts</span>
-      </a>
-
-      <a class="nav-item">
-        <span class="icon">
-          <!-- Reports -->
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M6 2h9l5 5v15a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z"
-            />
-          </svg>
-        </span>
-        <span>Reports</span>
-      </a>
-
-      <a class="nav-item">
-        <span class="icon">
-          <!-- Configurações -->
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M19.14 12.94a7.43 7.43 0 000-1.88l2.03-1.58-2-3.46-2.39.96a7.2 7.2 0 00-1.63-.94L14.8 2h-4l-.35 2.04c-.58.23-1.12.54-1.63.94l-2.39-.96-2 3.46 2.03 1.58a7.43 7.43 0 000 1.88L4.43 14.52l2 3.46 2.39-.96c.5.4 1.05.71 1.63.94L10.8 22h4l.35-2.04c.58-.23 1.12-.54 1.63-.94l2.39.96 2-3.46-2.03-1.58z"
-            />
-          </svg>
-        </span>
-        <span>Configurações</span>
-      </a>
-
-      <a class="nav-item">
-        <span class="icon">
-          <!-- Perfil -->
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 12a5 5 0 10-5-5 5 5 0 005 5zm0 2c-5 0-9 2.5-9 5.5V22h18v-2.5C21 16.5 17 14 12 14z"
-            />
-          </svg>
-        </span>
-        <span>Perfil</span>
-      </a>
-
-      <a class="nav-item logout">
-        <span class="icon">
-          <!-- Logout -->
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M10 17l1.41-1.41L8.83 13H20v-2H8.83l2.58-2.59L10 7l-7 7 7 7z"
-            />
-          </svg>
-        </span>
-        <span>Log Out</span>
-      </a>
-
-    </nav>
-  </aside>
+  <!-- SIDEBAR COMPONENT -->
+  <app-sidebar></app-sidebar>
 
   <!-- CONTEÚDO -->
   <main class="content">
@@ -106,7 +9,6 @@
     <!-- HEADER -->
     <header class="topbar">
       <span>Pages / Home</span>
-
       <div class="user">
         <span>{{ user?.name }}</span>
         <small>{{ user?.role }}</small>
@@ -115,44 +17,86 @@
 
     <!-- MÉTRICAS -->
     <section class="metrics">
-      <div class="card up">
-        <h4>Serviços Up</h4>
-        <strong>{{ metrics.servicesUp }}</strong>
-        <small>+5%</small>
+      <div class="metric-card up">
+        <div class="info">
+          <span class="label">Serviços Up</span>
+          <strong>{{ metrics.servicesUp }}</strong>
+          <small class="positive">+5%</small>
+        </div>
+        <div class="metric-icon">✔</div>
       </div>
 
-      <div class="card down">
-        <h4>Serviços Down</h4>
-        <strong>{{ metrics.servicesDown }}</strong>
-        <small>-10%</small>
+      <div class="metric-card down">
+        <div class="info">
+          <span class="label">Serviços Down</span>
+          <strong>{{ metrics.servicesDown }}</strong>
+          <small class="negative">-10%</small>
+        </div>
+        <div class="metric-icon">❤</div>
       </div>
 
-      <div class="card alert">
-        <h4>Alertas</h4>
-        <strong>{{ metrics.alerts }}</strong>
-        <small>+20%</small>
+      <div class="metric-card alert">
+        <div class="info">
+          <span class="label">Alertas</span>
+          <strong>{{ metrics.alerts }}</strong>
+          <small class="warning">+20%</small>
+        </div>
+        <div class="metric-icon">📊</div>
       </div>
     </section>
 
     <!-- GRID -->
     <section class="grid">
-      <div class="panel">
+
+      <!-- FLUXO DE CHEGADA -->
+      <div class="panel large">
         <h4>Fluxo de Chegada</h4>
-        <div class="chart-placeholder"></div>
+
+        <div class="chart-area">
+          <div class="y-axis">
+            <span>500</span>
+            <span>400</span>
+            <span>300</span>
+            <span>200</span>
+            <span>100</span>
+          </div>
+
+          <div class="chart-mock">
+            <div class="area-line"></div>
+          </div>
+        </div>
       </div>
 
-      <div class="panel">
+      <!-- ALERTAS -->
+      <div class="panel alerts-panel">
         <h4>Alertas Recentes</h4>
 
-        <ul class="alerts">
-          <li *ngFor="let alert of alerts" [class]="alert.type">
-            <span>{{ alert.title }}</span>
-            <small>{{ alert.time }}</small>
+        <ul class="alerts-list">
+          <li *ngFor="let alert of alerts" [ngClass]="alert.type">
+            <span class="dot" [ngClass]="alert.type"></span>
+            <div>
+              <strong>{{ alert.title }}</strong>
+              <small>{{ alert.time }}</small>
+            </div>
           </li>
         </ul>
       </div>
+
+      <!-- ACTIVE USERS -->
+      <div class="panel wide">
+        <h4>Active Users</h4>
+        <small class="sub">(+23) than last week</small>
+
+        <div class="bars">
+          <div class="bar"><span>KOPP</span></div>
+          <div class="bar"><span>Brancontrol</span></div>
+          <div class="bar"><span>Slice</span></div>
+          <div class="bar"><span>Pumatronix</span></div>
+          <div class="bar"><span>SPL</span></div>
+        </div>
+      </div>
+
     </section>
 
   </main>
-
 </div>

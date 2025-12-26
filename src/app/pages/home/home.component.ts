@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
 import { AuthService, User } from '../../core/auth/auth.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SidebarComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
@@ -20,10 +21,11 @@ export class HomeComponent {
   };
 
   alerts = [
-    { type: 'error', title: 'Bolt', time: '2025-02-23 12:00' },
-    { type: 'warning', title: 'New Order', time: '2025-02-23 11:40' },
-    { type: 'info', title: 'Caronte', time: '2025-02-23 10:20' },
-    { type: 'critical', title: 'RabbitMQ', time: '2025-02-23 09:10' },
+    { type: 'info', title: 'Bolt', time: '22 DEC 7:20 PM' },
+    { type: 'error', title: 'Erro 0 Bolt KOOP', time: '21 DEC 11:21 PM' },
+    { type: 'info', title: 'Caronte', time: '21 DEC 9:28 PM' },
+    { type: 'warning', title: 'RabbitMQ', time: '20 DEC 3:52 PM' },
+    { type: 'critical', title: 'Eventos Slice - Pendentes', time: '19 DEC 11:35 PM' },
   ];
 
   constructor(private authService: AuthService) {
